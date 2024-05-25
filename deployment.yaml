@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-app-deployment-user
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todo-app-user
+  template:
+    metadata:
+      labels:
+        app: todo-app-user
+    spec:
+      containers:
+      - name: todo-app-user
+        image: manassehrandriamitsiry/todo-app-user:1.0.0
+        ports:
+        - containerPort: 3002
+        env:
+        - name: NODE_ENV
+          value: "production"
